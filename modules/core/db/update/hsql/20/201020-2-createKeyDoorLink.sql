@@ -1,0 +1,2 @@
+alter table KEYMANAGER_KEY_DOOR_LINK add constraint FK_KEYDOO_ON_DOOR foreign key (DOOR_ID) references KEYMANAGER_DOOR(ID);
+alter table KEYMANAGER_KEY_DOOR_LINK add constraint FK_KEYDOO_ON_KEY foreign key (KEY_ID) references KEYMANAGER_KEY(ID);

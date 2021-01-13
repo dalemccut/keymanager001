@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="keymanager" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.company.keymanager.entity.Location</class>
+        <class>com.company.keymanager.entity.Building</class>
+        <class>com.company.keymanager.entity.Room</class>
+        <class>com.company.keymanager.entity.Door</class>
+        <class>com.company.keymanager.entity.Staff</class>
+        <class>com.company.keymanager.entity.KeyType</class>
+        <class>com.company.keymanager.entity.Key</class>
+        <class>com.company.keymanager.entity.KeyIssued</class>
+        <class>com.company.keymanager.entity.DoorType</class>
+        <class>com.company.keymanager.entity.KeyUnique</class>
+    </persistence-unit>
+</persistence>

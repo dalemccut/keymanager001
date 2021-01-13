@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-keymanager" insertBefore="administration" caption="mainMsg://menu_config.application-keymanager">
+        <item screen="keymanager_Location.browse" caption="mainMsg://menu_config.keymanager_Location.browse"/>
+        <item screen="keymanager_Building.browse" caption="mainMsg://menu_config.keymanager_Building.browse"/>
+        <item screen="keymanager_Key.browse" caption="mainMsg://menu_config.keymanager_Key.browse"/>
+        <item screen="keymanager_KeyType.browse" caption="mainMsg://menu_config.keymanager_KeyType.browse"/>
+        <item screen="keymanager_Staff.browse" caption="mainMsg://menu_config.keymanager_Staff.browse"/>
+        <item screen="keymanager_Door.browse" caption="mainMsg://menu_config.keymanager_Door.browse"/>
+        <item screen="keymanager_KeyIssued.browse" caption="mainMsg://menu_config.keymanager_KeyIssued.browse"/>
+        <item screen="keymanager_DoorType.browse" caption="mainMsg://menu_config.keymanager_DoorType.browse"/>
+        <item screen="keymanager_KeyAdd.browse" caption="mainMsg://menu_config.keymanager_KeyAdd.browse"/>
+    </menu>
+</menu-config>

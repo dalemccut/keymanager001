@@ -1,0 +1,1 @@
+drop table KEYMANAGER_KEY_RETURNED__U84347 if exists cascade ;

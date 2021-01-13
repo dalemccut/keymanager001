@@ -1,0 +1,1 @@
+drop table KEYMANAGER_STAFF_KEY_LINK__U05885 if exists cascade ;

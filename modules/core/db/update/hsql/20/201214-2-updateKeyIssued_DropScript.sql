@@ -1,0 +1,2 @@
+alter table KEYMANAGER_KEY_ISSUED drop column NUMBER_OF_KEYS_ISSUED__U59040 cascade ;
+alter table KEYMANAGER_KEY_ISSUED drop column NUMBER_OF_KEYS_RETURNED__U40324 cascade ;

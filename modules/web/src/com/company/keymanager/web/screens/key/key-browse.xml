@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://keyBrowse.caption"
+        focusComponent="keysTable"
+        messagesPack="com.company.keymanager.web.screens.key">
+    <data readOnly="true">
+        <collection id="keysDc"
+                    class="com.company.keymanager.entity.Key"
+                    view="key-view">
+            <loader id="keysDl">
+                <query>
+                    <![CDATA[select e from keymanager_Key e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="keysTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="keysTable"
+                dataLoader="keysDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="keysTable"
+                    width="100%"
+                    dataContainer="keysDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="keytype"/>
+                <column id="numberOfKeysIssued"/>
+                <column id="number"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="keysTable.create"/>
+                <button id="editBtn" action="keysTable.edit"/>
+                <button id="removeBtn" action="keysTable.remove"/>
+                <button id="refreshBtn" action="keysTable.refresh"/>
+                <button id="excelBtn" action="keysTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

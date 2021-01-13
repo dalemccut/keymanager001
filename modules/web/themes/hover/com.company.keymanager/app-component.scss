@@ -1,0 +1,5 @@
+@import "hover-ext";
+
+@mixin com_company_keymanager {
+  @include com_company_keymanager-hover-ext;
+}

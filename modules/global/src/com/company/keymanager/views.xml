@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="keymanager_Building" name="building-loc-room-door-view" extends="_local">
+        <property name="location" view="_minimal"/>
+        <property name="room" view="_minimal">
+            <property name="number"/>
+            <property name="door" view="_minimal">
+                <property name="number"/>
+            </property>
+            <property name="floor"/>
+        </property>
+    </view>
+    <view entity="keymanager_Room" name="room-door-view" extends="_local">
+        <property name="door" view="_minimal">
+            <property name="number"/>
+            <property name="doorType" view="_minimal"/>
+        </property>
+    </view>
+    <view entity="keymanager_Door" name="door-view" extends="_local">
+        <property name="room" view="_minimal">
+            <property name="number"/>
+            <property name="floor"/>
+            <property name="building" view="_minimal"/>
+        </property>
+        <property name="keys" view="_minimal">
+            <property name="number"/>
+        </property>
+        <property name="doorType" view="_minimal"/>
+    </view>
+    <view entity="keymanager_KeyAdd" name="keyUnique-view" extends="_local">
+        <property name="keyIssued" view="_minimal">
+            <property name="staff" view="_minimal"/>
+            <property name="dateReturned"/>
+            <property name="dateIssued"/>
+            <property name="supervisor" view="_minimal"/>
+        </property>
+        <property name="key" view="_minimal"/>
+    </view>
+    <view entity="keymanager_KeyIssued" name="keyIssued-view" extends="_local">
+        <property name="staff" view="_minimal"/>
+        <property name="supervisor" view="_minimal"/>
+        <property name="keyUnique" view="_minimal">
+            <property name="key" view="_minimal">
+                <property name="numberOfKeysIssued"/>
+            </property>
+            <property name="isIssued"/>
+        </property>
+    </view>
+    <view entity="keymanager_Key" name="key-view" extends="_local">
+        <property name="keyUnique" view="_minimal">
+            <property name="uniqueNumber"/>
+            <property name="isIssued"/>
+            <property name="dateAdded"/>
+        </property>
+        <property name="keytype" view="_minimal"/>
+        <property name="door" view="_minimal">
+            <property name="number"/>
+            <property name="doorType" view="_minimal"/>
+            <property name="room" view="_minimal">
+                <property name="number"/>
+                <property name="floor"/>
+            </property>
+        </property>
+    </view>
+</views>

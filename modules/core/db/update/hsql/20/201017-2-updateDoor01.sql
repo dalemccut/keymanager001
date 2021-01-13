@@ -1,0 +1,2 @@
+alter table KEYMANAGER_DOOR add constraint FK_KEYMANAGER_DOOR_ON_KEY foreign key (KEY_ID) references KEYMANAGER_KEY(ID);
+create index IDX_KEYMANAGER_DOOR_ON_KEY on KEYMANAGER_DOOR (KEY_ID);

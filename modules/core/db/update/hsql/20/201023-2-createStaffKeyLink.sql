@@ -1,0 +1,2 @@
+alter table KEYMANAGER_STAFF_KEY_LINK add constraint FK_STAKEY_ON_STAFF foreign key (STAFF_ID) references KEYMANAGER_STAFF(ID);
+alter table KEYMANAGER_STAFF_KEY_LINK add constraint FK_STAKEY_ON_KEY foreign key (KEY_ID) references KEYMANAGER_KEY(ID);

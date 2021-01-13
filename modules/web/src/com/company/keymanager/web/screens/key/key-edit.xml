@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://keyEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.keymanager.web.screens.key">
+    <data>
+        <instance id="keyDc"
+                  class="com.company.keymanager.entity.Key"
+                  view="key-view">
+            <loader/>
+            <collection id="keyUniqueDc" property="keyUnique"  />
+            <collection id="doorDc" property="door"/>
+        </instance>
+
+        <keyValueInstance id="keyValueInstance">
+            <loader>
+                <query>
+                    <![CDATA[select count(u.uniqueNumber) from keymanager_KeyUnique u]]>
+                </query>
+            </loader>
+
+            <properties>
+                <property name="numberOfKeys" datatype="decimal"/>
+            </properties>
+
+        </keyValueInstance>
+
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="keyDc">
+            <column width="350px">
+                <pickerField id="keytypeField" property="keytype">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="numberOfKeysIssuedField" property="numberOfKeysIssued"/>
+                <textField id="numberField" property="number"/>
+                <textField id="numberOfKeysField" inputPrompt="Total number of Keys"
+                           dataContainer="keyValueInstance" property="numberOfKeys"/>
+
+            </column>
+        </form>
+        <groupBox id="keyUniqueBox" caption="msg://com.company.keymanager.entity/Key.keyUnique">
+            <table id="keyUniqueTable" dataContainer="keyUniqueDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="uniqueNumber"/>
+                    <column id="dateAdded"/>
+                    <column id="isIssued"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="keyUniqueTable.create"/>
+                    <button action="keyUniqueTable.edit"/>
+                    <button action="keyUniqueTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="doorBox" caption="msg://com.company.keymanager.entity/Key.door">
+            <table id="doorTable" dataContainer="doorDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="description"/>
+                    <column id="number"/>
+                    <column id="doorType"/>
+                    <column id="room"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="doorTable.add"/>
+                    <button action="doorTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

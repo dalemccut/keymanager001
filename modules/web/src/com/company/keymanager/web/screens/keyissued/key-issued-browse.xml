@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://keyIssuedBrowse.caption"
+        focusComponent="keyIssuedsTable"
+        messagesPack="com.company.keymanager.web.screens.keyissued">
+    <data readOnly="true">
+        <collection id="keyIssuedsDc"
+                    class="com.company.keymanager.entity.KeyIssued"
+                    view="keyIssued-view">
+            <loader id="keyIssuedsDl">
+                <query>
+                    <![CDATA[select e from keymanager_KeyIssued e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="keyIssuedsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="keyIssuedsTable"
+                dataLoader="keyIssuedsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="keyIssuedsTable"
+                    width="100%"
+                    dataContainer="keyIssuedsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="staff"/>
+                <column id="dateReturned"/>
+                <column id="dateIssued"/>
+                <column id="supervisor"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="keyIssuedsTable.create"/>
+                <button id="editBtn" action="keyIssuedsTable.edit"/>
+                <button id="removeBtn" action="keyIssuedsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

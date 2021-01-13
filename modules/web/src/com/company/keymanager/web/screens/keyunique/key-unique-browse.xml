@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://keyUniqueBrowse.caption"
+        focusComponent="keyUniquesTable"
+        messagesPack="com.company.keymanager.web.screens.keyunique">
+    <data readOnly="true">
+        <collection id="keyUniquesDc"
+                    class="com.company.keymanager.entity.KeyUnique"
+                    view="keyUnique-view">
+            <loader id="keyUniquesDl">
+                <query>
+                    <![CDATA[select e from keymanager_KeyAdd e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="keyUniquesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="keyUniquesTable"
+                dataLoader="keyUniquesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="keyUniquesTable"
+                    width="100%"
+                    dataContainer="keyUniquesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="uniqueNumber"/>
+                <column id="dateAdded"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="keyUniquesTable.create"/>
+                <button id="editBtn" action="keyUniquesTable.edit"/>
+                <button id="removeBtn" action="keyUniquesTable.remove"/>
+                <button id="refreshBtn" action="keyUniquesTable.refresh"/>
+                <button id="excelBtn" action="keyUniquesTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
